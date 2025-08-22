@@ -6,9 +6,34 @@
   <link rel="stylesheet" href="dark-theme.css">
 </head>
 <body>
-  <!-- Logo at the top of the page -->
-  <div class="header__logo"></div>
-  <h1 style="text-align:center;">Welcome to the Scheduler</h1>
-  <!-- Rest of your scheduler content goes here -->
+  <div class="main-content">
+    <!-- Example of scheduler content (doctor's name, status, time, etc.) -->
+    <h1 class="doctor-name">Dr. Nahid Nasrat</h1>
+    <div class="status available">AVAILABLE</div>
+    <div class="availability-detail">FOR THE REST OF THE DAY</div>
+    <div class="date-time">
+      <div class="date">Friday, August 22, 2025</div>
+      <div class="time" id="currentTime">11:12 AM</div>
+    </div>
+    <div class="touch-msg">Touch screen to begin</div>
+  </div>
+  <img class="logo-accent" src="./assets/images/dc-logo.png" alt="logo accent">
+  <script>
+    // Optional: Dynamically update the time if desired
+    function updateTime() {
+      const timeElem = document.getElementById('currentTime');
+      if (!timeElem) return;
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0 should be 12
+      const minuteStr = minutes < 10 ? '0' + minutes : minutes;
+      timeElem.textContent = `${hours}:${minuteStr} ${ampm}`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
 </body>
 </html>
